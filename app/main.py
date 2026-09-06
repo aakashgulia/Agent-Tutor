@@ -13,7 +13,7 @@ st.caption("Designing Corporate-Startup Synergies — ENT 3805")
 
 st.divider()
 
-# Navigation
+# Sidebar navigation
 section = st.sidebar.radio(
     "Navigate",
     [
@@ -24,23 +24,70 @@ section = st.sidebar.radio(
     ]
 )
 
-# Chat section
+# --------------------------------------------------
+# CHAT
+# --------------------------------------------------
+
 if section == "💬 Chat":
+
     st.header("Course Chat")
+
     st.write(
         "Ask questions about corporate-startup collaboration, "
         "course concepts, readings, and our group knowledge."
     )
 
-    question = st.text_input("Ask a question")
+    # Create chat history
+    if "messages" not in st.session_state:
+        st.session_state.messages = []
+
+    # Display previous messages
+    for message in st.session_state.messages:
+
+        with st.chat_message(message["role"]):
+            st.write(message["content"])
+
+    # Chat input
+    question = st.chat_input(
+        "Ask a question about the course..."
+    )
 
     if question:
-        st.info(
-            "AI answering will be connected in a later step."
+
+        # Add student question
+        st.session_state.messages.append(
+            {
+                "role": "user",
+                "content": question
+            }
         )
 
-# Reflection section
+        with st.chat_message("user"):
+            st.write(question)
+
+        # Temporary response
+        response = (
+            "I received your question. "
+            "The AI model will be connected in a later step."
+        )
+
+        st.session_state.messages.append(
+            {
+                "role": "assistant",
+                "content": response
+            }
+        )
+
+        with st.chat_message("assistant"):
+            st.write(response)
+
+
+# --------------------------------------------------
+# CLASS REFLECTION
+# --------------------------------------------------
+
 elif section == "📝 Class Reflection":
+
     st.header("Class Reflection")
 
     st.write(
@@ -59,8 +106,13 @@ elif section == "📝 Class Reflection":
 
     st.button("Generate Reflection")
 
-# News section
+
+# --------------------------------------------------
+# FORTNIGHTLY NEWS
+# --------------------------------------------------
+
 elif section == "📰 Fortnightly News":
+
     st.header("Fortnightly Corporate-Startup News")
 
     st.write(
@@ -70,8 +122,13 @@ elif section == "📰 Fortnightly News":
 
     st.button("Find Latest News")
 
-# Prompt Log section
+
+# --------------------------------------------------
+# PROMPT LOG
+# --------------------------------------------------
+
 elif section == "📋 Prompt Log":
+
     st.header("Prompt & Activity Log")
 
     st.write(
