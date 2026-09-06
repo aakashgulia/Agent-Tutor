@@ -1,0 +1,581 @@
+ 
+1 
+ 
+Program Name: B.Tech SOET  
+Faculty Prof Kulbir Lamba Year/Semester Final year/ 7th  
+Course Name Designing Corporate -Startup 
+Synergies (ENT 3805) 
+No. of Credits  2-1-0 
+No Contact Hours 45 (25-30 hrs for classroom 
+teaching and balance field work/ 
+visits) 
+  
+ 
+Background: 
+Most academic programs focus on startups  OR corporates in isolation, leaving a critical gap in 
+training students and professionals to visualize these two different kinds of important organizations 
+working together for creating more impact . Bigger corporates interacting with startups might be 
+seen as a paradox. However, the trend is reversing now and the more of these interactions are not 
+for the sake of checklist completion. Corporate innovation literature finds many ways through 
+which bigger established corporates can innovate and remain ahead of the curve. Co -creating the 
+solutions with the startups is one of them. On the other hands startups feel that their size is not 
+relevant for the corporates, and they fear the failure of getting overshadowed by the big corporates. 
+In this paradox lies various opportunities which can help the startups and the corporates to come 
+together. There have been examples coming from Indian ecosystem where startups from their 
+incubation stages have been able to forge partnership with big corporates. Examples such as 
+BioNTech providing its technical knowledge on mRNA molecules while Pfizer bringing years of 
+experience in manufacturing it on a large scale and distributing it to the world during Covid19. As 
+the students graduate from their programs major natural outlets for them are ; working with the 
+startups, starting their own ventures, or working with the bigger corporates. In all these scenarios 
+it is very critical that they understand the relationship, opportunities, and various frameworks under 
+which an effective startup-corporate collaboration can work. Moreover, the existing courses being 
+offered across BMU doesn’t offer it as a comprehensive package. The increasing importance and 
+instances of more number of corporates working with the startups at the global level as well as in 
+India makes it a right moment for us to introduce our students with these frameworks and examples 
+from the ecosystem. 
+Course Description: 
+This course at the basic level will help the students to understand the need of the partnership 
+between startups and the corporates. Why this is important beyond the current merger and 
+acquisitions. Building on that understanding it will empower students to understand various 
+models for these partnerships and defining features of these models. These models would be a 
+basket of options available to both the parties right from providing access to facilities to having 
+majority equity stakes in those startups. Through a blend of Indian and global case studies  across 
+sectors, hands-on projects, and interactive workshops, students will learn how to identify strategic 
+value spaces, design win -win engagement models, and navigate cultural and operational 
+challenges unique to such partnerships. The curriculum will cover the full collaboration lifecycle— 
+2 
+ 
+from opportunity mapping and venture vehicle selection to execution, risk management, and 
+scaling innovation for mutual growth.  
+The course is designed with the objective of introducing the students with key concepts and 
+frameworks for corporate-startup collaboration. Why these collaborations are important. What are 
+the challenges and key success factors in corporate -startup partnerships. The course will g uide 
+students in designing effective partnership strategies for innovation. 
+Course Outcomes: 
+i. Understand and a nalyze the key concepts and frameworks for corporate -startup 
+collaboration. 
+ii. Analyze challenges and success factors in corporate -startup partnerships using real-world 
+cases. 
+iii. Design a practical blueprint for an effective corporate -startup partnership for different 
+context of innovation. 
+CO-PO Mapping 
+  Program Objectives (PO) 
+Course Outcomes (COs) Bloom’s 
+Level P
+O1 
+PO
+2 
+PO
+3 
+P
+O
+4 
+P
+O5 
+P
+O
+6 
+P
+O
+7 
+P
+O
+8 
+P
+O
+9 
+P
+O
+1
+0 
+P
+O
+1
+1 
+P
+O
+1
+2 
+CO1: Understand and 
+analyse the key concepts 
+and frameworks for 
+corporate-startup 
+collaboration 
+Comprehens
+ion (BL-2) 
+-- -- -- 2 -- 1 1 
+-
+- 3 2 1 3 
+CO2: Analyze 
+challenges and success 
+factors in corporate-
+startup partnerships 
+using real-world cases 
+Analyze 
+(BL-4) 
+-- -- -- 2 -- 1 2 
+-
+- 3 2 1 3 
+CO3: Design a practical 
+blueprint for an effective 
+corporate-startup 
+partnership for different 
+context of innovation 
+Creating 
+(BL-6) 
+-- -- -- 2 -- 2 2 2 3 3 2 3 
+Course Content: 
+KEY TOPICS TO BE COVERED 
+S. No Topic Description  
+1.  Introduction to 
+Corporate-Startup 
+Ecosystems 
+Explore the evolution, significance, and current landscape of 
+corporate-startup collaborations in India and globally.  
+3 
+ 
+2.  Collaboration Models: 
+Accelerators, CVCs, 
+Co-Innovation 
+Examine various models of engagement such as accelerators, 
+corporate venture capital, and co-innovation platforms, 
+highlighting their structures and outcomes. Global Capability 
+Centers (GCC) as drivers of innovation. 
+3.  Aligning Goals: 
+Corporate KPIs vs. 
+Startup Agility 
+How to identify and reconcile the differing objectives and 
+success metrics of corporates and startups for effective 
+partnerships. 
+4.  Legal & IP Challenges 
+in India 
+Understand the legal, regulatory, and intellectual property 
+considerations unique to these corporate-startup collaborations. 
+5.  Cultural Bridging: 
+Corporates vs. Startups 
+Analyse cultural differences between corporates and startups 
+and develop strategies to foster mutual understanding and 
+collaboration. 
+6.  Funding Models: 
+Equity, Revenue Share, 
+Hybrid 
+Study the financial structures commonly used in partnerships, 
+including equity investment, revenue sharing, and hybrid 
+models. 
+7.  Field Visit: Corporate 
+Innovation Lab and 
+startups 
+Observe real-world collaboration environments and learn how 
+corporates and startups facilitate partnerships between 
+corporates and startups. 
+8.  Case Deep Dive: 
+Failures & Successes  
+Investigate prominent examples of successful and failed 
+collaborations to extract lessons and best practices for future 
+partnerships. 
+The cases would be tried from all domains of entrepreneurship 
+e.g. technology entrepreneurship, social entrepreneurship etc. 
+9.  Tech Partnerships: 
+Platforms & 
+Integration 
+Explore how technology integration and digital platforms 
+enable scalable and sustainable collaborations. 
+10.  Project  Project with Corporates/ Startups  
+PEDAGOGY / TEACHING METHODOLOGY: 
+o Case studies 
+o Lectures 
+o Discussions 
+o Ecosystem immersion with the startups and the corporates who have done these 
+engagements  
+o Building AI tools for engagement and learning  
+Note:  
+i. Field immersion is the key element of this subject. Going into the different kinds of startups 
+and the corporates who are fostering these collaborations is the key element of this course. 
+This would be achieved by the students identifying such organizations and engaging with 
+them.  
+REFERENCE BOOK(S)/READING(S): (in APA format):  
+4 
+ 
+1. Chesbrough, H. W. (2003) ‘ Open innovation: The new imperative for creating and 
+profiting from technology.’ Watertown MA: Harvard Business Press 
+2. Csik, M.B.L., Torres Junior, A.S. Emergent way: corporate -startup synergies in shaping 
+the future of innovation. J Int Entrep 22, 187–212 (2024). https://doi.org/10.1007/s10843-
+024-00362-9 
+3. World Economic Forum. (2018). Collaboration between start -ups and corporates: A 
+practical guide for mutual understanding. World Economic Forum. 
+4. Ajlin Dizdarevic, Vareska van de Vrande & Justin Jansen (15 Nov 2023): When opposites 
+attract: a review and synthesis of corporate-startup collaboration, Industry and Innovation, 
+DOI: 10.1080/13662716.2023.2271853 
+5. Yoon, E., & Hughes, S. (2016, February 25). Big companies should collaborate with 
+startups. Harvard Business Review. https://hbr.org/2016/02/big-companies-should-
+collaborate-with-startups 
+6. Ferran Giones, Raj Krishnan Shankar, Sheryl Winston Smith, Cristobal Garcia-Herrera & 
+Bram Timmermans (2024) Introduction to special issue on corporate and startup 
+collaborations in an age of disruption: looking beyond the dyad, Industry and Innovation, 
+31:5, 533-543, DOI: 10.1080/13662716.2024.2346315 
+7. Gutmann, T., & Lang, C. (2022). Unlocking the magic of corporate -startup collaboration: 
+How to make it work. IEEE Engineering Management Review, 50 (2), 19 –25. 
+https://doi.org/10.1109/EMR.2022.3158490 
+8. Burns, P. (2020). Corporate entrepreneurship and innovation. (4th Edition), Macmillan 
+Education Limited.  
+Evaluation PATTERN: 
+Components of 
+Course 
+Evaluation 
+Weight 
+Timeline CO-
+Mapping 
+PO-Mapping  Guidelines 
+Individual 
+participation and 
+contribution (in 
+discussion and 
+case studies)/ 
+reflective 
+learning/ 
+Attending 
+Outside event 
+20% 
+Continuous 
+assessment 
+CO 1, 2 PO 4,6,9, 10, 11, 
+12 
+Constructive 
+contribution is 
+expected so that 
+class provides a 
+discussion and 
+learning platform 
+for all. 
+Corporate Startup 
+Tutor  20% 
+Continuous 
+Assessment  
+CO 1, 2, 
+3 
+PO 
+4,6,7,9,10,11,12 
+Refer detailed 
+guidelines at the 
+end  
+5 
+ 
+Industry 
+Undercurrents: 
+Where is the 
+money? 
+20%  
+ 
+ 
+ 
+2nd Half of  
+October 
+CO 1, 2 PO 4,7,12 Provide an 
+analysis of 
+corporate venture 
+deals happened in 
+2025. Refer 
+detailed 
+guidelines at the 
+end 
+End term Field 
+Project Based on 
+Field immersion 
+(Group Project) 
+Presentation) 
+40% 
+2nd/ 3rd 
+week of 
+Nov 2025 
+CO 1, 2, 
+3 
+PO 
+4,6,7,8,9,10,11,12 
+Refer detailed 
+guidelines at the 
+end 
+Total 100%     
+ 
+SESSION WISE TOPICS AND READINGS:  
+1 Session means 1 week. In a week we have two time s lots (One class is for 55 minutes and 
+another for 1hr 50 minutes). Mostly the longer class will be kept for teaching, and the shorter class 
+will be kept for tutorial/ project work/ team work on assignments. 
+Session No Session Description CO PO 
+Session: 1 Session Title: Setting the context CO 1 PO 4, 11, 12 
+ • Course Outline Discussion and 
+explanation 
+• Introduction to Sources of Innovation 
+and the concept of Open Innovation 
+  
+Pedagogy Discussion & Lecture    
+Session: 2 Understanding the two sides of a Coin? 
+Are they same-Corporate and Startups? 
+  
+Pedagogy Discussion & Lecture  
+Live Examples 
+Class activity 
+  
+Pre-read Big Companies Should 
+Collaborate with Startups (HBR Article) 
+  
+Session: 3  Session Title: Models of Collaboration CO 1, 2 PO 4,6, 7,8, 
+9,10, 11, 12  
+6 
+ 
+ • Accelerators, corporate venture capital, co-
+innovation lab, Strategic partners/ 
+acquisitions, Equity etc. 
+  
+Pedagogy Case, Article and Video Discussion; Group 
+Exercise, Flip Classroom  
+  
+ Project Groups shall be finalized by 3rd 
+Session 
+  
+Session No-4 Interaction with people handling Corporate-
+Startup Collaboration  
+CO 1, 2 PO 4, 7, 10, 
+11, 12 
+ Team members from incubation/ corporate 
+startup accelerator program to be invited for a 
+guest lecture. 
+  
+Session No-5 Case Discussion   
+Pre-read Case Title: Sustainability Through Open 
+Innovation Carlsberg and the Green Fiber 
+Bottle 
+Or based on class discussion will bring some 
+other equivalent useful case 
+  
+    
+Session No-6 Group progress review first half of September  
+Session 7 Corporate Incubation Program CO 1, 2,  PO 4,6, 7,8, 
+9,10, 11, 12 
+Key aspects to 
+be covered 
+• How do corporates design incubation 
+programs 
+• Global Capability Centers (GCC) as engines 
+of innovation 
+  
+Pedagogy Discussion on “Maruti Suzuki Incubation 
+Program for Startups”, Flip Classroom 
+  
+Session No-8 Aligning Goals and Value Creation CO 1, 2 PO 4,6, 7,8, 
+9,10, 11, 12 
+ Understanding corporate vs. startup 
+motivations; mapping value propositions and 
+KPIs. 
+  
+Pre-read Case “Is Corporate Venture Capital Right for 
+Your Startup?” 
+  
+Session No-9 Talk from a Startup Founder/ from the 
+Corporate Team 
+CO 1, 2 PO 4, 7, 10, 
+11, 12 
+ Talk by the startup founder/ Corporate leader 
+who has been interacting and building with 
+startups 
+   
+7 
+ 
+Session No-10 Legal, IP, and Regulatory Challenges CO 1, 2  PO 4,6, 7,8,  
+9,10, 11, 12 
+ Key legal and IP issues in India; risk mitigation 
+strategies in collaborations 
+  
+Pedagogy Case, Article, Video Discussion & Lecture, 
+Flip Classroom 
+  
+ Project Progress Review (Mid-October)  
+Session No-11 Cultural and Operational Differences CO 1, 2 PO 4,6, 7,8,  
+9,10, 11, 12 
+ Contrasting corporate and startup cultures; 
+strategies for bridging gaps. 
+  
+Pedagogy Discussion and Lecture, case scenarios, Flip 
+Classroom 
+  
+Session No- 
+12 
+Role of Ecosystem stakeholders and building 
+Platforms to enable the synergies 
+CO 1, 2 PO 4,6, 7,8,  
+9,10, 11, 12 
+ How incubators, accelerators are leading to 
+startup-corporate synergies  
+Explore how technology integration and digital 
+platforms enable scalable and sustainable 
+collaborations. 
+  
+Pre-read Discussion on case “HCL Technologies: 
+Driving Innovation Through Ecosystem 
+Innovation Platform” 
+Discussion on TCS Co-Innovation Network 
+Case, Article, Video Discussion & Lecture, 
+Flip Classroom 
+  
+Session No-13 How to make the relationship work CO 1, 2 PO 4,6, 7,8,  
+9,10, 11, 12 
+ Major pitfalls to be avoided and how the 
+relationship building can happen 
+  
+Pre-read Discussion article “After the Honeymoon Ends: 
+Making Corporate-Startup Relationships 
+Work” 
+  
+Project Presentations   
+ End term project presentation by the students CO 1, 2, 
+3 
+PO 4,6, 7,8,  
+9,10, 11, 12 
+Based on the progress of class, response and grasp of the concepts by students we would make 
+necessary changes in the session, study material, and approach as suggested at this stage.  
+ASSESSMENT RUBRICS   
+8 
+ 
+Detailed guidelines for the evaluation components 
+A. Industry Undercurrents: Where is the money? 
+• Go to the GCV Powerlist 2025 website. (https://globalventuring.com/intelligence/2026-
+gcv-powerlist) 
+• From the list, choose 5 companies only. 
+• From these 5 companies, pick 2 deals from 2025. 
+• The 2 deals must be from 2 different companies. 
+• No two groups should study the same deal. 
+What to do for each deal 
+• Read the deal announcement  and other details about it like news items, blog posts, or 
+interviews about the same deal. 
+• Study all the material carefully. 
+• Try to understand why the deal was done. 
+• Look at the business reason, the market reason, and the timing of the deal. 
+• Compare the two deals and note: 
+o What is similar? 
+o What is different? 
+o What kind of strategy does each company seem to be following? 
+What the group should submit 
+• A 2 page write-up, with a final comparison table of the two deals. It must answer  
+o What was the deal and it happened between which companies? 
+o What was the company trying to achieve? 
+o Why did it choose that startup or partner? 
+o What do the other articles say about the deal? 
+o What is your final view on the real reason for the deal? 
+B. Corporate Startup Tutor 
+• Each group will create one Agent Tutor for the course (it must have access to all group 
+members and the instructor) 
+• The Agent Tutor will do two tasks only: 
+o create a short class reflection after every session, 
+o curate corporate-startup collaboration news once every fortnight. 
+• For each class reflection, the Agent Tutor should help the group record: 
+o key points from the class 
+o One open question which they couldn’t get clarified in the class 
+• For each fortnightly update, the Agent Tutor should help the group: 
+o collect news items/ updated related to corporate startup collaboration. These can be 
+social media posts (specifically linkdIn, announcement on the company websites, 
+announcement by the startups, 
+o summarize them, 
+o and note why they matter for corporate-startup collaboration.  
+9 
+ 
+• The Agent Tutor must keep a visible prompt log. 
+• The instructor should be able to see: 
+o student prompts, 
+o AI responses, 
+o and student-added notes in the same shared space. 
+C. For Project Report  
+i. Identify one Indian startup or corporate that has worked with a corporate/startup partner. 
+ii. The project must be based on a real field interaction, not only desk research. 
+iii. The collaboration studied must be more than a client–vendor relationship. 
+iv. Meet the organization, understand the partnership, and collect information through 
+conversation and observation. 
+Identify: 
+a. who the partners are, 
+b. what kind of collaboration it is, 
+c. what each side gains, 
+d. and what challenges they faced. 
+v. The final project presentation will be evaluated based on groups presentation which must 
+have evidence of interaction, such as notes, photos, or interview points. 
+Use your own judgment to explain why this partnership matters. 
+Traits Below Expectations Meets 
+Expectations 
+Exceeds Expectation 
+Gather 
+Relevant 
+Informatio
+n 
+Struggles to 
+pinpoint the 
+information needed. 
+Gathers information 
+from one source. 
+Minimal evidence of 
+search/selection 
+criteria. 
+Clearly identifies the 
+information 
+required. Gathers 
+information from 
+multiple valid and 
+reliable sources. 
+Evidence of 
+search/selection 
+criteria. 
+Demonstrates a sophisticated 
+understanding of what 
+information is needed. 
+Gathers extensive information 
+from a variety of valid and 
+reliable sources including 
+journals, texts, etc., specific to 
+the subject. Clear evidence of 
+search/selection criteria. 
+Select 
+and 
+Use 
+Releva
+nt 
+Concep
+ts and 
+Frame
+works 
+Has limited 
+knowledge on 
+selecting and using 
+relevant concepts 
+and frameworks. 
+Requires extensive 
+assistance in 
+selecting relevant 
+concepts and 
+frameworks. 
+Selects and uses 
+relevant concepts and 
+frameworks. Requires 
+minimal assistance in 
+choosing relevant 
+concepts and 
+frameworks. 
+Selects and uses relevant 
+concepts and frameworks. 
+Needs no assistance in 
+selecting relevant concepts 
+and frameworks.  
+10 
+ 
+About the Instructors: 
+Prof Kulbir Lamba 
+ 
+Prof Kulbir Lamba is a deep -tech entrepreneurship scholar with 15+ years’ experience spanning 
+industry, incubation leadership and academic research. An engineer from NIT Jalandhar and MBA 
+from IIT Delhi, he is completing his PhD at IIT Jodhpur on technology commercialization. Kulbir 
+has been part of leadership team of incubation centres at IIT Jodhpur and IIIT -Delhi, building 
+ecosystems, winning multimillion -rupee grants, and mentoring budding entrepreneurs. His 
+practitioner insight underpins refereed contr ibutions, including two teaching cases for Ivey 
+Publishing on commercializing Indian deep-tech innovations. Now at BML Munjal University, he 
+is part of the Institute of Innovation and Entrepreneurship. His teaching interests span Managing 
+Technology & Inno vation, Design Thinking, Innovation & Entrepreneurship , and Building 
+corporate-startup synergies. He is involved in various other key initiatives for steering academia -
+industry partnerships and technology commercialization. 
+ 
+Email: kulbir.lamba@bmu.edu.in  
+ 
