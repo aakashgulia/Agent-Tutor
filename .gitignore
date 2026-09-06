@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Virtual environment
+venv/
+
+# Environment variables and API keys
+.env
+
+# Local database
+*.db
+
+# Streamlit
+.streamlit/secrets.toml
