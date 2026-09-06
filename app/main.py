@@ -1,4 +1,6 @@
 import streamlit as st
+from llm import generate_response
+
 
 # Page configuration
 st.set_page_config(
@@ -66,10 +68,7 @@ if section == "💬 Chat":
             st.write(question)
 
         # Temporary response
-        response = (
-            "I received your question. "
-            "The AI model will be connected in a later step."
-        )
+        response = generate_response(question) 
 
         st.session_state.messages.append(
             {
