@@ -1,5 +1,5 @@
 import streamlit as st
-from llm import generate_response
+from rag import generate_rag_response
 
 
 # Page configuration
@@ -68,7 +68,7 @@ if section == "💬 Chat":
             st.write(question)
 
         # Temporary response
-        response = generate_response(question) 
+        response, sources = generate_rag_response(question) 
 
         st.session_state.messages.append(
             {

@@ -2,7 +2,7 @@ import json
 import math
 from pathlib import Path
 
-from app.embeddings import create_embedding
+from embeddings import create_embedding
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
