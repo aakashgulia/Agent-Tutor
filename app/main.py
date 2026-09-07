@@ -83,6 +83,13 @@ if section == "💬 Chat":
 
         with st.chat_message("assistant"):
             st.write(response)
+            st.markdown("### Sources")
+
+            for source in sources:
+               st.write(
+                  f"📄 {source['source']} "
+                  f"(similarity: {source['score']:.3f})"
+                )
 
 
 # --------------------------------------------------
