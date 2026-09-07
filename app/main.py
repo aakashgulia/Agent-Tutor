@@ -57,24 +57,20 @@ if section == "Chat":
         "course concepts, readings, and our group knowledge."
     )
 
-    # Create chat history
     if "messages" not in st.session_state:
         st.session_state.messages = []
 
-    # Display previous messages
     for message in st.session_state.messages:
 
         with st.chat_message(message["role"]):
             st.write(message["content"])
 
-    # Chat input
     question = st.chat_input(
         "Ask a question about the course..."
     )
 
     if question:
 
-        # Add student question
         st.session_state.messages.append(
             {
                 "role": "user",
@@ -85,10 +81,8 @@ if section == "Chat":
         with st.chat_message("user"):
             st.write(question)
 
-        # Generate RAG response
         response, sources = generate_rag_response(question)
 
-        # Save assistant response to chat history
         st.session_state.messages.append(
             {
                 "role": "assistant",
@@ -96,7 +90,6 @@ if section == "Chat":
             }
         )
 
-        # Save prompt and response to prompt log
         prompt_log_file = Path("data/prompt_log.json")
 
         try:
@@ -184,7 +177,6 @@ elif section == "Class Reflection":
 
             st.write(reflection)
 
-            # Save reflection
             reflection_file = Path("data/reflections.json")
 
             try:
@@ -238,11 +230,153 @@ elif section == "Fortnightly News":
     st.header("Fortnightly Corporate-Startup News")
 
     st.write(
-        "This section will collect and summarize relevant "
-        "corporate-startup collaboration news."
+        "Latest corporate-startup collaboration news "
+        "relevant to Panasonic India."
     )
 
-    st.button("Find Latest News")
+    if st.button("Find Latest News"):
+
+        from news import fetch_news
+        from llm import generate_response
+
+        try:
+
+            articles = fetch_news()
+
+            if not articles:
+
+                st.warning(
+                    "No relevant news articles found."
+                )
+
+            else:
+
+                news_file = Path("data/news.json")
+
+                try:
+                    saved_news = json.loads(
+                        news_file.read_text(
+                            encoding="utf-8"
+                        )
+                    )
+
+                except (FileNotFoundError, json.JSONDecodeError):
+
+                    saved_news = []
+
+                updated_news = []
+
+                for article in articles:
+
+                    interpretation_prompt = f"""
+You are Agent Tutor for the course
+Designing Corporate-Startup Synergies (ENT 3805).
+
+News headline:
+
+{article["title"]}
+
+Source:
+
+{article["source"]}
+
+Explain the relevance of this headline to the course.
+
+STRICT GROUNDING RULES:
+
+- Start with exactly: "AI Interpretation:"
+- Use ONLY information explicitly stated in the headline.
+- Do not explain the company's motivation or purpose unless
+  the headline states it.
+- Do not predict or suggest outcomes, benefits, results,
+  growth, innovation impact, or future opportunities.
+- Do not identify a company, startup, programme, technology,
+  investment, partnership, or relationship beyond what the
+  headline explicitly states.
+- Do not add facts from your general knowledge.
+- Do not pretend to have read the full article.
+- You may connect explicitly stated terms such as "startup",
+  "co-creation", "collaboration", or "programme" to general
+  course concepts such as corporate-startup collaboration
+  and co-creation.
+- If an important detail is not available from the headline,
+  say:
+  "The headline does not provide enough information to determine this."
+- Keep the answer to exactly 2-3 sentences.
+- Keep it student-friendly.
+
+Focus on WHAT THE HEADLINE SAYS, not WHY IT MAY BE HAPPENING.
+"""
+
+                    interpretation = generate_response(
+                        interpretation_prompt
+                    )
+
+                    saved_article = article.copy()
+                    saved_article["ai_interpretation"] = interpretation
+
+                    updated_news.append(saved_article)
+
+                # Preserve older saved articles
+                for old_article in saved_news:
+
+                    if old_article["link"] not in [
+                        article["link"]
+                        for article in updated_news
+                    ]:
+
+                        updated_news.append(old_article)
+
+                news_file.write_text(
+                    json.dumps(
+                        updated_news,
+                        indent=2,
+                        ensure_ascii=False
+                    ),
+                    encoding="utf-8"
+                )
+
+                st.success(
+                    f"Found {len(articles)} relevant recent articles."
+                )
+
+                for article in updated_news[:len(articles)]:
+
+                    st.subheader(article["title"])
+
+                    st.write(
+                        f"**Source:** {article['source']}"
+                    )
+
+                    st.write(
+                        f"**Published:** {article['published']}"
+                    )
+
+                    st.markdown(
+                        f"[Open original article]({article['link']})"
+                    )
+
+                    st.markdown(
+                        "### Course Relevance (AI Interpretation)"
+                    )
+
+                    st.write(
+                        article["ai_interpretation"]
+                    )
+
+                    st.caption(
+                        "This is an AI interpretation based on the "
+                        "headline only. Open the original article for "
+                        "verified article details."
+                    )
+
+                    st.divider()
+
+        except Exception as e:
+
+            st.error(
+                f"Unable to fetch news: {e}"
+            )
 
 
 # --------------------------------------------------
@@ -280,7 +414,9 @@ elif section == "Prompt Log":
 
     if not prompt_logs:
 
-        st.info("No prompt history has been recorded yet.")
+        st.info(
+            "No prompt history has been recorded yet."
+        )
 
     else:
 
@@ -301,9 +437,31 @@ elif section == "Prompt Log":
                 f"**AI Response:** {log['response']}"
             )
 
-            st.write(
-                f"**Student Note:** "
-                f"{log.get('student_note', '') or 'No note added yet.'}"
+            student_note = st.text_area(
+                "Student-added note",
+                value=log.get("student_note", ""),
+                key=f"student_note_{index}",
+                height=100
             )
+
+            if st.button(
+                "Save Note",
+                key=f"save_note_{index}"
+            ):
+
+                prompt_logs[index - 1]["student_note"] = student_note
+
+                prompt_log_file.write_text(
+                    json.dumps(
+                        prompt_logs,
+                        indent=2,
+                        ensure_ascii=False
+                    ),
+                    encoding="utf-8"
+                )
+
+                st.success(
+                    "Student note saved."
+                )
 
             st.divider()
