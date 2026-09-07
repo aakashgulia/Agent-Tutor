@@ -1,5 +1,5 @@
-from retriever import retrieve_chunks
-from llm import generate_response
+from app.retriever import retrieve_chunks
+from app.llm import generate_response
 
 
 def generate_rag_response(question, top_k=3):
