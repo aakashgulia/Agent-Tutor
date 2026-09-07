@@ -1,40 +1,54 @@
 import sys
 from pathlib import Path
+import json
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
 import streamlit as st
 from rag import generate_rag_response
 
 
+# --------------------------------------------------
 # Page configuration
+# --------------------------------------------------
+
 st.set_page_config(
     page_title="Agent Tutor",
     page_icon="🎓",
     layout="wide"
 )
 
+
+# --------------------------------------------------
 # Application title
+# --------------------------------------------------
+
 st.title("🎓 Agent Tutor")
 st.caption("Designing Corporate-Startup Synergies — ENT 3805")
 
 st.divider()
 
+
+# --------------------------------------------------
 # Sidebar navigation
+# --------------------------------------------------
+
 section = st.sidebar.radio(
     "Navigate",
     [
-        "💬 Chat",
-        "📝 Class Reflection",
-        "📰 Fortnightly News",
-        "📋 Prompt Log"
+        "Chat",
+        "Class Reflection",
+        "Fortnightly News",
+        "Prompt Log"
     ]
 )
+
 
 # --------------------------------------------------
 # CHAT
 # --------------------------------------------------
 
-if section == "💬 Chat":
+if section == "Chat":
 
     st.header("Course Chat")
 
@@ -71,9 +85,10 @@ if section == "💬 Chat":
         with st.chat_message("user"):
             st.write(question)
 
-        # Temporary response
-        response, sources = generate_rag_response(question) 
+        # Generate RAG response
+        response, sources = generate_rag_response(question)
 
+        # Save assistant response to chat history
         st.session_state.messages.append(
             {
                 "role": "assistant",
@@ -82,13 +97,16 @@ if section == "💬 Chat":
         )
 
         with st.chat_message("assistant"):
+
             st.write(response)
+
             st.markdown("### Sources")
 
             for source in sources:
-               st.write(
-                  f"📄 {source['source']} "
-                  f"(similarity: {source['score']:.3f})"
+
+                st.write(
+                    f"📄 {source['source']} "
+                    f"(similarity: {source['score']:.3f})"
                 )
 
 
@@ -96,7 +114,7 @@ if section == "💬 Chat":
 # CLASS REFLECTION
 # --------------------------------------------------
 
-elif section == "📝 Class Reflection":
+elif section == "Class Reflection":
 
     st.header("Class Reflection")
 
@@ -104,24 +122,87 @@ elif section == "📝 Class Reflection":
         "Use this section after each class session."
     )
 
-    st.text_area(
+    key_points = st.text_area(
         "Key points from today's class",
         height=150
     )
 
-    st.text_area(
+    open_question = st.text_area(
         "One open / unanswered question",
         height=100
     )
 
-    st.button("Generate Reflection")
+    if st.button("Generate Reflection"):
+
+        if not key_points.strip() or not open_question.strip():
+
+            st.warning(
+                "Please enter both the key points and the open question."
+            )
+
+        else:
+
+            from rag import generate_reflection
+
+            reflection, sources = generate_reflection(
+                key_points,
+                open_question
+            )
+
+            st.subheader("Generated Reflection")
+
+            st.write(reflection)
+
+            # Save reflection
+            reflection_file = Path("data/reflections.json")
+
+            try:
+                reflections = json.loads(
+                    reflection_file.read_text(
+                        encoding="utf-8"
+                    )
+                )
+
+            except (FileNotFoundError, json.JSONDecodeError):
+
+                reflections = []
+
+            reflections.append(
+                {
+                    "key_points": key_points,
+                    "open_question": open_question,
+                    "reflection": reflection
+                }
+            )
+
+            reflection_file.write_text(
+                json.dumps(
+                    reflections,
+                    indent=2,
+                    ensure_ascii=False
+                ),
+                encoding="utf-8"
+            )
+
+            st.success(
+                "Reflection saved successfully."
+            )
+
+            st.subheader("Sources")
+
+            for source in sources:
+
+                st.write(
+                    f"📄 {source['source']} "
+                    f"(similarity: {source['score']:.3f})"
+                )
 
 
 # --------------------------------------------------
 # FORTNIGHTLY NEWS
 # --------------------------------------------------
 
-elif section == "📰 Fortnightly News":
+elif section == "Fortnightly News":
 
     st.header("Fortnightly Corporate-Startup News")
 
@@ -137,7 +218,7 @@ elif section == "📰 Fortnightly News":
 # PROMPT LOG
 # --------------------------------------------------
 
-elif section == "📋 Prompt Log":
+elif section == "Prompt Log":
 
     st.header("Prompt & Activity Log")
 
@@ -145,8 +226,10 @@ elif section == "📋 Prompt Log":
         "The final system will maintain a visible record of:"
     )
 
-    st.markdown("""
-    - Student prompts
-    - AI responses
-    - Student-added notes
-    """)
+    st.markdown(
+        """
+        - Student prompts
+        - AI responses
+        - Student-added notes
+        """
+    )

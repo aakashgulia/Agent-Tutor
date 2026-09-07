@@ -23,7 +23,7 @@ You are Agent Tutor for the course Designing Corporate-Startup Synergies (ENT 38
 
 Answer the student's question using the course material provided below.
 
-Rules:
+
 Rules:
 - Use the retrieved course material as the primary source.
 - Do not invent facts, examples, companies, or claims.
@@ -41,3 +41,51 @@ STUDENT QUESTION:
 """
 
     return generate_response(prompt), results
+
+def generate_reflection(key_points, open_question, top_k=3):
+    reflection_query = f"""
+Class key points:
+{key_points}
+
+Open / unanswered question:
+{open_question}
+"""
+
+    results = retrieve_chunks(reflection_query, top_k=top_k)
+
+    context_parts = []
+
+    for result in results:
+        context_parts.append(
+            f"Source: {result['source']}\n"
+            f"{result['text']}"
+        )
+
+    context = "\n\n---\n\n".join(context_parts)
+
+    prompt = f"""
+You are Agent Tutor for the course Designing Corporate-Startup Synergies (ENT 3805).
+
+Create a concise class reflection using the student's notes and the retrieved course material.
+
+Rules:
+- Keep the student's key points as the basis of the reflection.
+- Use the retrieved course material to connect the reflection to the course.
+- Do not invent facts or claims.
+- Do not answer the student's open question unless the retrieved material directly supports an answer.
+- Clearly distinguish course-supported information from interpretation.
+- Keep the reflection student-friendly.
+
+STUDENT KEY POINTS:
+{key_points}
+
+STUDENT OPEN QUESTION:
+{open_question}
+
+RETRIEVED COURSE MATERIAL:
+{context}
+"""
+
+    reflection = generate_response(prompt)
+
+    return reflection, results
