@@ -96,6 +96,37 @@ if section == "Chat":
             }
         )
 
+        # Save prompt and response to prompt log
+        prompt_log_file = Path("data/prompt_log.json")
+
+        try:
+            prompt_logs = json.loads(
+                prompt_log_file.read_text(
+                    encoding="utf-8"
+                )
+            )
+
+        except (FileNotFoundError, json.JSONDecodeError):
+
+            prompt_logs = []
+
+        prompt_logs.append(
+            {
+                "prompt": question,
+                "response": response,
+                "student_note": ""
+            }
+        )
+
+        prompt_log_file.write_text(
+            json.dumps(
+                prompt_logs,
+                indent=2,
+                ensure_ascii=False
+            ),
+            encoding="utf-8"
+        )
+
         with st.chat_message("assistant"):
 
             st.write(response)
@@ -223,7 +254,7 @@ elif section == "Prompt Log":
     st.header("Prompt & Activity Log")
 
     st.write(
-        "The final system will maintain a visible record of:"
+        "The system maintains a visible record of:"
     )
 
     st.markdown(
@@ -233,3 +264,46 @@ elif section == "Prompt Log":
         - Student-added notes
         """
     )
+
+    prompt_log_file = Path("data/prompt_log.json")
+
+    try:
+        prompt_logs = json.loads(
+            prompt_log_file.read_text(
+                encoding="utf-8"
+            )
+        )
+
+    except (FileNotFoundError, json.JSONDecodeError):
+
+        prompt_logs = []
+
+    if not prompt_logs:
+
+        st.info("No prompt history has been recorded yet.")
+
+    else:
+
+        for index, log in enumerate(
+            prompt_logs,
+            start=1
+        ):
+
+            st.markdown(
+                f"### Interaction {index}"
+            )
+
+            st.write(
+                f"**Student Prompt:** {log['prompt']}"
+            )
+
+            st.write(
+                f"**AI Response:** {log['response']}"
+            )
+
+            st.write(
+                f"**Student Note:** "
+                f"{log.get('student_note', '') or 'No note added yet.'}"
+            )
+
+            st.divider()
