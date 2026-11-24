@@ -1,22 +1,29 @@
-import requests
 
+import os
+from groq import Groq
 
-OLLAMA_URL = "http://localhost:11434/api/generate"
-MODEL_NAME = "llama3.2:3b"
+MODEL_NAME = "openai/gpt-oss-120b"
 
 
 def generate_response(prompt):
-    response = requests.post(
-        OLLAMA_URL,
-        json={
-            "model": MODEL_NAME,
-            "prompt": prompt,
-            "stream": False
-        }
+
+    api_key = os.getenv("GROQ_API_KEY")
+
+    if not api_key:
+        raise RuntimeError(
+            "GROQ_API_KEY is not configured."
+        )
+
+    client = Groq(api_key=api_key)
+
+    response = client.chat.completions.create(
+        model=MODEL_NAME,
+        messages=[
+            {
+                "role": "user",
+                "content": prompt
+            }
+        ]
     )
 
-    response.raise_for_status()
-
-    data = response.json()
-
-    return data["response"]
+    return response.choices[0].message.content

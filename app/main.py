@@ -1,6 +1,7 @@
 import sys
 from pathlib import Path
 import json
+from datetime import datetime
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
@@ -111,6 +112,11 @@ if section == "Chat":
             }
         )
 
+        prompt_log_file.parent.mkdir(
+            parents=True,
+            exist_ok=True
+        )
+
         prompt_log_file.write_text(
             json.dumps(
                 prompt_logs,
@@ -146,6 +152,30 @@ elif section == "Class Reflection":
         "Use this section after each class session."
     )
 
+    reflection_file = Path("data/reflections.json")
+
+    # Load previously saved reflections
+    try:
+
+        reflections = json.loads(
+            reflection_file.read_text(
+                encoding="utf-8"
+            )
+        )
+
+        if not isinstance(reflections, list):
+            reflections = []
+
+    except (FileNotFoundError, json.JSONDecodeError):
+
+        reflections = []
+
+    # --------------------------------------------------
+    # CREATE NEW REFLECTION
+    # --------------------------------------------------
+
+    st.subheader("Create a New Reflection")
+
     key_points = st.text_area(
         "Key points from today's class",
         height=150
@@ -166,59 +196,230 @@ elif section == "Class Reflection":
 
         else:
 
-            from rag import generate_reflection
+            try:
 
-            reflection, sources = generate_reflection(
-                key_points,
-                open_question
+                from rag import generate_reflection
+
+                with st.spinner("Generating your class reflection..."):
+
+                    reflection, sources = generate_reflection(
+                        key_points,
+                        open_question
+                    )
+
+                # Prepare the saved reflection
+                saved_record = {
+                    "key_points": key_points,
+                    "open_question": open_question,
+                    "reflection": reflection,
+                    "saved_at": datetime.now().strftime(
+                        "%d %b %Y, %I:%M %p"
+                    ),
+                    "sources": [
+                        {
+                            "source": source.get(
+                                "source",
+                                "Unknown"
+                            ),
+                            "score": source.get("score")
+                        }
+                        for source in sources
+                    ]
+                }
+
+                # Add new reflection to existing records
+                reflections.append(saved_record)
+
+                # Ensure data directory exists
+                reflection_file.parent.mkdir(
+                    parents=True,
+                    exist_ok=True
+                )
+
+                # Save reflections
+                reflection_file.write_text(
+                    json.dumps(
+                        reflections,
+                        indent=2,
+                        ensure_ascii=False
+                    ),
+                    encoding="utf-8"
+                )
+
+                st.success(
+                    "Reflection generated and saved successfully!"
+                )
+
+                st.subheader("Generated Reflection")
+
+                st.write(reflection)
+
+                st.markdown("### Sources")
+
+                for source in sources:
+
+                    st.write(
+                        f"📄 {source['source']} "
+                        f"(similarity: {source['score']:.3f})"
+                    )
+
+            except Exception as e:
+
+                st.error(
+                    f"Unable to generate reflection: {e}"
+                )
+
+    # --------------------------------------------------
+    # SAVED REFLECTIONS
+    # --------------------------------------------------
+
+    st.divider()
+
+    st.subheader("Saved Class Reflections")
+
+    # Summary metrics
+    col1, col2 = st.columns(2)
+
+    with col1:
+
+        st.metric(
+            "Total Saved Reflections",
+            len(reflections)
+        )
+
+    with col2:
+
+        latest_session = (
+            reflections[-1].get(
+                "saved_at",
+                "Previously saved"
+            )
+            if reflections
+            else "No sessions yet"
+        )
+
+        st.metric(
+            "Latest Session",
+            latest_session
+        )
+
+    # Display saved reflections
+    if not reflections:
+
+        st.info(
+            "No saved reflections yet. "
+            "Generate your first reflection above."
+        )
+
+    else:
+
+        search_query = st.text_input(
+            "Search your reflections",
+            placeholder="Search by topic, question or class notes..."
+        )
+
+        matching_reflections = []
+
+        # Newest reflections appear first
+        for index, item in reversed(
+            list(enumerate(reflections, start=1))
+        ):
+
+            searchable_text = (
+                str(item.get("key_points", "")) + " " +
+                str(item.get("open_question", "")) + " " +
+                str(item.get("reflection", ""))
+            ).lower()
+
+            if search_query.lower() in searchable_text:
+
+                matching_reflections.append(
+                    (index, item)
+                )
+
+        st.caption(
+            f"Showing {len(matching_reflections)} "
+            f"of {len(reflections)} saved reflections"
+        )
+
+        if not matching_reflections:
+
+            st.info(
+                "No reflections match your search."
             )
 
-            st.subheader("Generated Reflection")
+        for index, item in matching_reflections:
 
-            st.write(reflection)
+            saved_date = item.get(
+                "saved_at",
+                "Previously saved"
+            )
 
-            reflection_file = Path("data/reflections.json")
+            with st.expander(
+                f"Reflection #{index} | {saved_date}"
+            ):
 
-            try:
-                reflections = json.loads(
-                    reflection_file.read_text(
-                        encoding="utf-8"
+                st.markdown("**Key Points from Class**")
+
+                st.write(
+                    item.get(
+                        "key_points",
+                        "Not available"
                     )
                 )
 
-            except (FileNotFoundError, json.JSONDecodeError):
-
-                reflections = []
-
-            reflections.append(
-                {
-                    "key_points": key_points,
-                    "open_question": open_question,
-                    "reflection": reflection
-                }
-            )
-
-            reflection_file.write_text(
-                json.dumps(
-                    reflections,
-                    indent=2,
-                    ensure_ascii=False
-                ),
-                encoding="utf-8"
-            )
-
-            st.success(
-                "Reflection saved successfully."
-            )
-
-            st.subheader("Sources")
-
-            for source in sources:
+                st.markdown(
+                    "**Open / Unanswered Question**"
+                )
 
                 st.write(
-                    f"📄 {source['source']} "
-                    f"(similarity: {source['score']:.3f})"
+                    item.get(
+                        "open_question",
+                        "Not available"
+                    )
                 )
+
+                st.divider()
+
+                st.markdown("**Generated Reflection**")
+
+                st.markdown(
+                    item.get(
+                        "reflection",
+                        "Not available"
+                    )
+                )
+
+                saved_sources = item.get(
+                    "sources",
+                    []
+                )
+
+                if saved_sources:
+
+                    st.markdown("**Course Sources**")
+
+                    for source in saved_sources:
+
+                        source_name = source.get(
+                            "source",
+                            "Unknown"
+                        )
+
+                        score = source.get("score")
+
+                        if score is not None:
+
+                            st.write(
+                                f"📄 {source_name} "
+                                f"(similarity: {score:.3f})"
+                            )
+
+                        else:
+
+                            st.write(
+                                f"📄 {source_name}"
+                            )
 
 
 # --------------------------------------------------
@@ -227,11 +428,16 @@ elif section == "Class Reflection":
 
 elif section == "Fortnightly News":
 
-    st.header("Fortnightly Corporate-Startup News")
+    st.header("Fortnightly Startup & Corporate News")
 
     st.write(
-        "Latest corporate-startup collaboration news "
-        "relevant to Panasonic India."
+        "Explore recent Indian startup and corporate developments, "
+        "including funding, acquisitions, collaborations, technology, "
+        "business expansion, IPOs, policy updates, and Panasonic-related news."
+    )
+
+    st.caption(
+        "News is collected from the previous 14 days."
     )
 
     if st.button("Find Latest News"):
@@ -246,7 +452,8 @@ elif section == "Fortnightly News":
             if not articles:
 
                 st.warning(
-                    "No relevant news articles found."
+                    "No relevant news articles found in the last 14 days. "
+                    "Please try again later."
                 )
 
             else:
@@ -261,7 +468,6 @@ elif section == "Fortnightly News":
                     )
 
                 except (FileNotFoundError, json.JSONDecodeError):
-
                     saved_news = []
 
                 updated_news = []
@@ -273,12 +479,13 @@ You are Agent Tutor for the course
 Designing Corporate-Startup Synergies (ENT 3805).
 
 News headline:
-
 {article["title"]}
 
 Source:
-
 {article["source"]}
+
+Category:
+{article.get("category", "General Business News")}
 
 Explain the relevance of this headline to the course.
 
@@ -286,7 +493,7 @@ STRICT GROUNDING RULES:
 
 - Start with exactly: "AI Interpretation:"
 - Use ONLY information explicitly stated in the headline.
-- Do not explain the company's motivation or purpose unless
+- Do not explain a company's motivation or purpose unless
   the headline states it.
 - Do not predict or suggest outcomes, benefits, results,
   growth, innovation impact, or future opportunities.
@@ -295,10 +502,9 @@ STRICT GROUNDING RULES:
   headline explicitly states.
 - Do not add facts from your general knowledge.
 - Do not pretend to have read the full article.
-- You may connect explicitly stated terms such as "startup",
-  "co-creation", "collaboration", or "programme" to general
-  course concepts such as corporate-startup collaboration
-  and co-creation.
+- You may connect explicitly stated terms to general course
+  concepts such as corporate-startup collaboration,
+  entrepreneurship, innovation, and business strategy.
 - If an important detail is not available from the headline,
   say:
   "The headline does not provide enough information to determine this."
@@ -318,14 +524,20 @@ Focus on WHAT THE HEADLINE SAYS, not WHY IT MAY BE HAPPENING.
                     updated_news.append(saved_article)
 
                 # Preserve older saved articles
+                new_links = {
+                    article["link"]
+                    for article in updated_news
+                }
+
                 for old_article in saved_news:
 
-                    if old_article["link"] not in [
-                        article["link"]
-                        for article in updated_news
-                    ]:
-
+                    if old_article.get("link") not in new_links:
                         updated_news.append(old_article)
+
+                news_file.parent.mkdir(
+                    parents=True,
+                    exist_ok=True
+                )
 
                 news_file.write_text(
                     json.dumps(
@@ -337,19 +549,25 @@ Focus on WHAT THE HEADLINE SAYS, not WHY IT MAY BE HAPPENING.
                 )
 
                 st.success(
-                    f"Found {len(articles)} relevant recent articles."
+                    f"Found {len(articles)} recent news articles."
                 )
 
                 for article in updated_news[:len(articles)]:
 
-                    st.subheader(article["title"])
+                    st.markdown(
+                        f"### {article['title']}"
+                    )
 
-                    st.write(
-                        f"**Source:** {article['source']}"
+                    st.markdown(
+                        f"**Category:** {article.get('category', 'General Business News')}"
                     )
 
                     st.write(
-                        f"**Published:** {article['published']}"
+                        f"**Source:** {article.get('source', 'Not available')}"
+                    )
+
+                    st.write(
+                        f"**Published:** {article.get('published', 'Not available')}"
                     )
 
                     st.markdown(
@@ -357,11 +575,14 @@ Focus on WHAT THE HEADLINE SAYS, not WHY IT MAY BE HAPPENING.
                     )
 
                     st.markdown(
-                        "### Course Relevance (AI Interpretation)"
+                        "#### Course Relevance (AI Interpretation)"
                     )
 
                     st.write(
-                        article["ai_interpretation"]
+                        article.get(
+                            "ai_interpretation",
+                            "AI interpretation is not available."
+                        )
                     )
 
                     st.caption(
